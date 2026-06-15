@@ -1,0 +1,63 @@
+import torch
+import torch.nn.functional as F
+
+print("="*60)
+print(" 练习 1: 给大厨的大脑装上监控探头")
+print("="*60)
+# 任务目标：
+# 我们准备造一个超级简单的大脑，只有 w 和 b 两个参数。
+# 1. 请给 w 和 b 都装上监控探头 (提示：设置 requires_grad=True)
+# 2. 我们已经为你准备好了假数据 x 和 y
+
+x = torch.ones(5)  # 输入特征 (比如一张极其极其模糊的照片)
+y = torch.zeros(3) # 正确答案 (比如这绝对不是猫)
+
+# --- 请在下方写代码 ---
+w = torch.randn(5, 3, requires_grad=True)
+b = torch.randn(3, requires_grad=True)
+
+
+# --- 代码结束 ---
+
+
+print("\n" + "="*60)
+print(" 练习 2: 品菜与疯狂追责 (反向传播)")
+print("="*60)
+# 任务目标：
+# 1. 炒菜 (前向传播)：用公式 z = torch.matmul(x, w) + b 算出一盘菜
+# 2. 品菜：用 F.binary_cross_entropy_with_logits 算出 loss
+# 3. 打印 w.grad，看看这时候有没有责任值？
+# 4. 按下追责核按钮：执行反向传播 (提示：也就是调用那个极其重要的 backward 函数)
+# 5. 再次打印 w.grad，看看现在出现数字没有？
+
+# --- 请在下方写代码 ---
+z = torch.matmul(x,w)+b
+loss = F.binary_cross_entropy_with_logits(z,y)
+print(f"核爆前 w 的责任值是: {w.grad}")
+
+# (在这里写追责的终极咒语)
+loss.backward()
+print(f"核爆后 w 的责任值变成了: \n{w.grad}")
+
+
+# --- 代码结束 ---
+
+
+print("\n" + "="*60)
+print(" 练习 3: 正式营业，关掉探头省电！")
+print("="*60)
+# 任务目标：
+# 假设现在大厨已经出师了，客人拿来了数据 x_test，要求大厨直接做菜。
+# 此时不需要追责，请使用我们在文档末尾学到的“关探头咒语”，包裹住前向传播的过程。
+# 验证：如果你写对了，最后打印的 requires_grad 结果一定是 False！
+
+x_test = torch.rand(5)
+
+# --- 请在下方写代码 ---
+with torch.no_grad():
+    z_test = torch.matmul(x_test, w) + b
+
+print(f"测试时的菜盘子还需要被监控吗？答案是: {z_test.requires_grad}")
+
+
+# --- 代码结束 ---

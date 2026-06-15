@@ -1,0 +1,16 @@
+# Obsidian specific
+.obsidian/workspace
+.obsidian/workspace-mobile
+.obsidian/workspace.json
+.obsidian/cache
+.obsidian/plugins/obsidian-git/backup.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini

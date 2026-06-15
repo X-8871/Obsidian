@@ -1,0 +1,18 @@
+{
+	"nodes":[
+		{"id":"672d5d1160610274","type":"text","text":"","x":80,"y":0,"width":300,"height":60},
+		{"id":"62aa9e47a4647c7d","type":"text","text":"","x":80,"y":-109,"width":300,"height":60},
+		{"id":"5f96a5e83c4980fe","type":"text","text":"","x":80,"y":-199,"width":300,"height":60},
+		{"id":"e9df4a33ad5fde15","type":"text","text":"","x":80,"y":100,"width":300,"height":60},
+		{"id":"7ff876350c40028c","type":"text","text":"乐鑫开发板","x":-340,"y":-79,"width":300,"height":60,"color":"1"},
+		{"id":"73704e2f8c5264ab","type":"text","text":"1.","x":80,"y":-300,"width":300,"height":60,"color":"1"},
+		{"id":"bcebf15e589f9f00","type":"text","text":"","x":-328,"y":314,"width":300,"height":60}
+	],
+	"edges":[
+		{"id":"c8a81921c3e99acf","fromNode":"7ff876350c40028c","fromSide":"right","toNode":"73704e2f8c5264ab","toSide":"left","toEnd":"none","color":"1"},
+		{"id":"d5122c2341ad1fcf","fromNode":"5f96a5e83c4980fe","fromSide":"left","toNode":"7ff876350c40028c","toSide":"right","color":"1"},
+		{"id":"ddea0eaee1f47faf","fromNode":"62aa9e47a4647c7d","fromSide":"left","toNode":"7ff876350c40028c","toSide":"right"},
+		{"id":"4a952b2d26fa5714","fromNode":"672d5d1160610274","fromSide":"left","toNode":"7ff876350c40028c","toSide":"right"},
+		{"id":"480c965defdc2c6e","fromNode":"e9df4a33ad5fde15","fromSide":"left","toNode":"7ff876350c40028c","toSide":"right"}
+	]
+}

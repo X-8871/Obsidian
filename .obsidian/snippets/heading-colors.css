@@ -1,0 +1,9 @@
+/* 标题颜色 - 深蓝色系 */
+h1, h2, h3, h4, h5, h6 {
+  color: #1a3a5c !important;
+}
+
+/* 如果需要不同级别不同深浅，可以用下面这种 */
+h1 { color: #0d2b4e !important; }  /* 最深 */
+h2 { color: #1a3a5c !important; }
+h3 { color: #2a4a6e !important; }

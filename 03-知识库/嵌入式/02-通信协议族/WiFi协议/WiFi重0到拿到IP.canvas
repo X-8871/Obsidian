@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"4837bc8fd159921e","type":"text","text":"**设备初始化，打开蓝牙协议服务**\n① 初始化 NVS（打开 flash 存储）\n② 初始化 esp_netif（网络接口框架）\n③ 创建事件循环（让系统能收发异步事件）\n④ 创建 STA netif（建立无线网卡对象）\n⑤ 初始化 Wi-Fi 驱动（硬件就绪）\n⑥ 注册 5 类事件回调（告诉系统：有事找我）","x":-820,"y":-770,"width":300,"height":300},
+		{"id":"145fda496e8dcf05","type":"text","text":"**关键分叉：已经配过网？**","x":-500,"y":-650,"width":300,"height":60,"color":"1"},
+		{"id":"d5fbab43566079d5","type":"text","text":"**上层通过，联网成功** WiFiManager_IsConnected() 知道网通了","x":1540,"y":-640,"width":300,"height":89,"color":"1"},
+		{"id":"e36bfcc30475ff93","type":"text","text":"**是**（已有凭证）\n进入WiFi连路由器状态","x":180,"y":-700,"width":300,"height":60,"color":"1"},
+		{"id":"a5e79e55707ad87e","type":"text","text":"**否**\n进入BLE连接状态","x":-140,"y":-580,"width":300,"height":60,"color":"1"},
+		{"id":"3dc1cdab7905121a","type":"text","text":"手机连接设备并发送WIFI凭证","x":180,"y":-490,"width":300,"height":60,"color":"1"},
+		{"id":"426c80db60cd0a54","type":"text","text":"设备拿到凭证保存到NVS\n设备退出蓝牙服务并进入WIFI STA","x":520,"y":-580,"width":300,"height":60,"color":"1"},
+		{"id":"f7bb9de0c8ab3b03","type":"text","text":"设备根据凭证连接到路由器","x":860,"y":-620,"width":300,"height":60,"color":"1"},
+		{"id":"200c6cdccc0e4d12","type":"text","text":"路由器根据DHCP分发给设备地址IP","x":1200,"y":-620,"width":300,"height":60,"color":"1"}
+	],
+	"edges":[
+		{"id":"5f4b2ada1e582375","fromNode":"4837bc8fd159921e","fromSide":"right","toNode":"145fda496e8dcf05","toSide":"left","color":"1"},
+		{"id":"ad1c658d3beff754","fromNode":"145fda496e8dcf05","fromSide":"right","toNode":"e36bfcc30475ff93","toSide":"left","color":"1"},
+		{"id":"3c2e388cbdf2ac60","fromNode":"145fda496e8dcf05","fromSide":"right","toNode":"a5e79e55707ad87e","toSide":"left","color":"1"},
+		{"id":"3f435f80e602be03","fromNode":"a5e79e55707ad87e","fromSide":"right","toNode":"3dc1cdab7905121a","toSide":"left","color":"1"},
+		{"id":"b52d3f021c3d9643","fromNode":"3dc1cdab7905121a","fromSide":"right","toNode":"426c80db60cd0a54","toSide":"left","color":"1"},
+		{"id":"58ad2a18f231b34b","fromNode":"e36bfcc30475ff93","fromSide":"right","toNode":"f7bb9de0c8ab3b03","toSide":"left","color":"1"},
+		{"id":"fe5b6feeead9133d","fromNode":"426c80db60cd0a54","fromSide":"right","toNode":"f7bb9de0c8ab3b03","toSide":"left"},
+		{"id":"9c848caad4f6d972","fromNode":"f7bb9de0c8ab3b03","fromSide":"right","toNode":"200c6cdccc0e4d12","toSide":"left","color":"1"},
+		{"id":"f30fab6ffe38de6e","fromNode":"200c6cdccc0e4d12","fromSide":"right","toNode":"d5fbab43566079d5","toSide":"left","color":"1"}
+	]
+}
