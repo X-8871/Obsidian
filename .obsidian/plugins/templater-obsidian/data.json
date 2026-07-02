@@ -15,8 +15,8 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "01-Daily/Daily",
-      "template": "Temptlaters/Daily.md"
+      "folder": "01-Daily",
+      "template": "Temptlaters/日报.md"
     },
     {
       "folder": "01-Daily/Weekly",
