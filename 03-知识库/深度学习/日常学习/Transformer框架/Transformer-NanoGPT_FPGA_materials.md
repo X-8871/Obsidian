@@ -132,15 +132,15 @@ GELU 让网络不只是线性矩阵相乘的叠加。完整 GELU 需要误差函
 
 本项目为了可重复验证，重点使用 argmax：同样的输入、权重、定点规则应得到同样的最高分 token。PS 会把该 token 映射回字符，经 UART 输出。
 
-|  |  |  |
-| --- | --- | --- |
-| **GPT Block 步骤** | **Python 对应** | **硬件对应** |
-| LayerNorm 1 | ln\_1 | layernorm\_kernel / 定点 LayerNorm 路径 |
-| QKV、Attention、投影 | attn | Q/K/V Projection、QKT、Projection |
-| Residual 1 | x + ... | 定点加法与饱和裁剪 |
-| LayerNorm 2 | ln\_2 | LayerNorm 路径 |
-| FFN + GELU | mlp | tiled\_matmul、gelu\_embed\_kernel、FFN |
-| Residual 2 | x + ... | 定点加法与中间缓冲 |
+|                  |               |                                       |
+| ---------------- | ------------- | ------------------------------------- |
+| **GPT Block 步骤** | **Python 对应** | **硬件对应**                              |
+| LayerNorm 1      | ln\_1         | layernorm\_kernel / 定点 LayerNorm 路径   |
+| QKV、Attention、投影 | attn          | Q/K/V Projection、QKT、Projection       |
+| Residual 1       | x + ...       | 定点加法与饱和裁剪                             |
+| LayerNorm 2      | ln\_2         | LayerNorm 路径                          |
+| FFN + GELU       | mlp           | tiled\_matmul、gelu\_embed\_kernel、FFN |
+| Residual 2       | x + ...       | 定点加法与中间缓冲                             |
 
 本节来源：Karpathy nanoGPT `Block`、`MLP`、`GPT` 类；Hugging Face GPT-2 实现；本地 `hls/source`。
 
