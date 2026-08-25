@@ -10,6 +10,6 @@
   ],
   "autoSync": true,
   "paused": false,
-  "lastSyncMessage": "正在上传 126/324：03-知识库/pytorch学习/data/FashionMNIST/raw/train-labels-idx1-ubyte",
-  "lastSyncAt": "2026-08-25T09:42:46.322Z"
+  "lastSyncMessage": "同步失败：附件上传超时",
+  "lastSyncAt": "2026-08-25T10:01:20.965Z"
 }
