@@ -1,7 +1,7 @@
 {
   "endpoint": "https://arxqxxvhkrwddkzuaehd.supabase.co/functions/v1/obsidian-sync",
   "deviceToken": "0DFOLxTb82s_pJCx7kpKBvkUktGx7IHasfXtb-Ozmro",
-  "vaultId": "b8e27feb-b95b-4aa2-ba61-59958e41b170",
+  "vaultId": "a1f200b7-da5a-4923-ba54-9a24a7ae6b84",
   "vaultName": "Obsidian Vault",
   "excludes": [
     ".obsidian",
@@ -10,6 +10,6 @@
   ],
   "autoSync": true,
   "paused": false,
-  "lastSyncMessage": "同步失败：同步请求超时",
-  "lastSyncAt": "2026-08-25T09:27:23.951Z"
+  "lastSyncMessage": "正在上传 126/324：03-知识库/pytorch学习/data/FashionMNIST/raw/train-labels-idx1-ubyte",
+  "lastSyncAt": "2026-08-25T09:42:46.322Z"
 }
