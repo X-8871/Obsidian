@@ -1,0 +1,9 @@
+{
+  "id": "mouse-workbench-obsidian-sync",
+  "name": "Mouse Workbench Obsidian Sync",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "将 Obsidian Vault 增量同步到 Mouse Workbench，只读网页端查看。",
+  "author": "Mouse Workbench",
+  "isDesktopOnly": true
+}
