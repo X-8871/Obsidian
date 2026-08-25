@@ -9,5 +9,7 @@
     ".git"
   ],
   "autoSync": true,
-  "paused": false
+  "paused": false,
+  "lastSyncMessage": "同步失败：Invalid key: 51c81898-403b-419d-8078-8973445a73ce/3c23a445-ef36-498a-98b4-73f5aa3b2929/05-代码/WiFiManager.h",
+  "lastSyncAt": "2026-08-25T09:09:36.002Z"
 }
