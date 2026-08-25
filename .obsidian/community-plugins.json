@@ -3,5 +3,6 @@
   "templater-obsidian",
   "quickadd",
   "collapsible-code-blocks",
-  "obsidian-git"
+  "obsidian-git",
+  "mouse-workbench-obsidian-sync"
 ]

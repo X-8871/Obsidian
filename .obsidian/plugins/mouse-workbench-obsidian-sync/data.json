@@ -1,0 +1,13 @@
+{
+  "endpoint": "https://arxqxxvhkrwddkzuaehd.supabase.co/functions/v1/obsidian-sync",
+  "deviceToken": "",
+  "vaultId": "",
+  "vaultName": "Obsidian Vault",
+  "excludes": [
+    ".obsidian",
+    ".trash",
+    ".git"
+  ],
+  "autoSync": true,
+  "paused": false
+}

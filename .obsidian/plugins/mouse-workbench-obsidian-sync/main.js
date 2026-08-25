@@ -228,7 +228,7 @@ var MouseWorkbenchPlugin = class extends import_obsidian2.Plugin {
       new import_obsidian2.Notice("\u8BF7\u5148\u586B\u5199 Obsidian Sync Edge Function \u5730\u5740");
       return;
     }
-    const code = window.prompt("\u8BF7\u8F93\u5165\u7F51\u9875\u8BBE\u7F6E\u9875\u751F\u6210\u7684\u4E00\u6B21\u6027\u914D\u5BF9\u7801");
+    const code = await requestPairingCode(this.app);
     if (!code) return;
     try {
       const result = await exchangePairing(this.settings.endpoint, code, this.app.vault.getName());
@@ -240,6 +240,51 @@ var MouseWorkbenchPlugin = class extends import_obsidian2.Plugin {
     } catch (error) {
       new import_obsidian2.Notice(error instanceof Error ? error.message : "\u914D\u5BF9\u5931\u8D25");
     }
+  }
+};
+function requestPairingCode(app) {
+  return new Promise((resolve) => {
+    new PairingCodeModal(app, resolve).open();
+  });
+}
+var PairingCodeModal = class extends import_obsidian2.Modal {
+  constructor(app, finish) {
+    super(app);
+    this.finish = finish;
+    this.code = "";
+    this.finished = false;
+  }
+  onOpen() {
+    const { contentEl } = this;
+    contentEl.empty();
+    contentEl.createEl("h2", { text: "\u8FDE\u63A5 Mouse Workbench" });
+    new import_obsidian2.Setting(contentEl).setName("\u4E00\u6B21\u6027\u914D\u5BF9\u7801").setDesc("\u8F93\u5165\u7F51\u9875\u8BBE\u7F6E\u9875\u751F\u6210\u7684 8 \u4F4D\u914D\u5BF9\u7801\uFF0C\u914D\u5BF9\u7801\u6709\u6548\u671F\u4E3A 10 \u5206\u949F\u3002").addText((text) => {
+      text.setPlaceholder("\u8F93\u5165\u914D\u5BF9\u7801").onChange((value) => {
+        this.code = value.trim();
+      });
+      text.inputEl.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        this.submit();
+      });
+      window.setTimeout(() => text.inputEl.focus(), 0);
+    });
+    new import_obsidian2.Setting(contentEl).addButton((button) => button.setButtonText("\u53D6\u6D88").onClick(() => this.close())).addButton((button) => button.setCta().setButtonText("\u8FDE\u63A5").onClick(() => this.submit()));
+  }
+  onClose() {
+    this.contentEl.empty();
+    if (this.finished) return;
+    this.finished = true;
+    this.finish(void 0);
+  }
+  submit() {
+    if (!this.code) {
+      new import_obsidian2.Notice("\u8BF7\u8F93\u5165\u914D\u5BF9\u7801");
+      return;
+    }
+    this.finished = true;
+    this.finish(this.code);
+    this.close();
   }
 };
 var MouseWorkbenchSettingTab = class extends import_obsidian2.PluginSettingTab {
