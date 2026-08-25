@@ -1,7 +1,7 @@
 {
   "endpoint": "https://arxqxxvhkrwddkzuaehd.supabase.co/functions/v1/obsidian-sync",
   "deviceToken": "0DFOLxTb82s_pJCx7kpKBvkUktGx7IHasfXtb-Ozmro",
-  "vaultId": "",
+  "vaultId": "b8e27feb-b95b-4aa2-ba61-59958e41b170",
   "vaultName": "Obsidian Vault",
   "excludes": [
     ".obsidian",
@@ -10,6 +10,6 @@
   ],
   "autoSync": true,
   "paused": false,
-  "lastSyncMessage": "同步失败：Invalid key: 51c81898-403b-419d-8078-8973445a73ce/3c23a445-ef36-498a-98b4-73f5aa3b2929/05-代码/WiFiManager.h",
-  "lastSyncAt": "2026-08-25T09:09:36.002Z"
+  "lastSyncMessage": "同步失败：同步请求超时",
+  "lastSyncAt": "2026-08-25T09:27:23.951Z"
 }
