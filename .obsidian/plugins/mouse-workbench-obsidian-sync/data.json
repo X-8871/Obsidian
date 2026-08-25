@@ -1,6 +1,6 @@
 {
   "endpoint": "https://arxqxxvhkrwddkzuaehd.supabase.co/functions/v1/obsidian-sync",
-  "deviceToken": "",
+  "deviceToken": "0DFOLxTb82s_pJCx7kpKBvkUktGx7IHasfXtb-Ozmro",
   "vaultId": "",
   "vaultName": "Obsidian Vault",
   "excludes": [
