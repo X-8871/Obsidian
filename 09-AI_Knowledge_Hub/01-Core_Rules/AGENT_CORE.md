@@ -62,6 +62,9 @@ tags: [Agent-Core, Global-Rules, Constitution]
    - 涉及服务器、网络、数据库时 $\rightarrow$ 主动读取 `[[云服务器连接与运维_模板]]`；
    - 涉及特定重要项目时 $\rightarrow$ 主动读取 `03-Project_Runbooks/` 下对应的项目手册；
    - 涉及多 AI 任务切换时 $\rightarrow$ 严格执行 `[[HANDOFF_PROTOCOL]]`。
+4. **大型项目实时动态交接看板 (Continuous Live Handoff)**：
+   - 在推进大型项目、跨模块重构或多步骤任务时，AI **必须在每一个阶段性里程碑达成后、重大决策变更时、或本轮会话结束前，实时更新项目根目录的 `HANDOFF.md`**。
+   - 严禁把交接记录拖到任务全部做完才写，确保随时遭遇中断或切换工具时，上下文 100% 完整可衔接。
 
 ---
 
