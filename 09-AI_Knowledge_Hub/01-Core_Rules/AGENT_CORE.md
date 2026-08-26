@@ -8,6 +8,10 @@ tags: [Agent-Core, Global-Rules, Constitution]
 
 # 📜 AGENT_CORE: AI 行为宪法与全局准则
 
+> [!INFO] 约束文件物理定位
+> - **项目物理绝对路径**：`C:\Users\22061\Documents\Obsidian Vault`
+> - **Git 仓库地址**：`https://github.com/X-8871/Obsidian.git`
+
 > [!IMPORTANT]
 > 本文件是所有接入本环境的 AI Agent（Antigravity、Codex、Workbuddy、OpenCode 等）必须无条件遵循的**最高行为宪法**。
 
@@ -78,4 +82,3 @@ tags: [Agent-Core, Global-Rules, Constitution]
 > 1. `05-Private_Vault/` 目录属于物理与逻辑双重绝密隔离区。
 > 2. **严禁主动扫描与读取**：未经用户在当前对话中明确发出显式授权指令（例如：“`授权访问私密库`”或“`读取 Private_Vault`”），任何 AI 绝对禁止主动检索、读取、分析或在回复与日志中打印该目录下的任何文件内容。
 > 3. **严禁硬编码泄露**：在任何生成的代码、测试脚本或配置文件中，绝对严禁将敏感凭据直接硬编码，必须强制引导使用环境变量（如 `os.getenv`）或外部安全载入。
-
