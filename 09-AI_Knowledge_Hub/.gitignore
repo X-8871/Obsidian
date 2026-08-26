@@ -1,0 +1,11 @@
+# 忽略私密凭据隔离区
+05-Private_Vault/
+
+# 忽略常见敏感文件
+*.env
+*.env.local
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
