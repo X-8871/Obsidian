@@ -16,6 +16,10 @@ tags:
 
 # Mouse Workbench 与 Obsidian 同步服务维护说明
 
+> [!INFO] 项目定位
+> - **项目物理绝对路径**：`C:/Users/22061/Desktop/Project/nothing`
+> - **Git 仓库地址**：`https://github.com/X-8871/mousewong-personal-web.git`
+
 > [!IMPORTANT]
 > 任何 AI 在修改本项目的本地数据模型、账号同步、Obsidian 同步协议或生产部署前，必须通读本手册，并严格遵守第三节红线。通用发布与按需激活方法引用 [[低内存Node服务按需激活与原子发布指南]]，端到端同步验收引用 [[大文件清单式原子同步验收SOP]]。
 
