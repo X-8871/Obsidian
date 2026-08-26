@@ -18,18 +18,18 @@ tags:
 
 ## 一、服务器基础连接信息
 
-| 配置项 | 公开记录值 | 实际值位置 |
-|---|---|---|
-| 服务器用途 | Minecraft Fabric 私服与 AI 新闻机器人 | 本文件 |
-| 云平台 | 云主机 | [[Minecraft云服务器敏感连接信息]] |
-| 公网地址 | `<server-host>` | [[Minecraft云服务器敏感连接信息]] |
-| SSH 端口 | `<ssh-port>` | [[Minecraft云服务器敏感连接信息]] |
-| SSH 用户 | `<ssh-user>` | [[Minecraft云服务器敏感连接信息]] |
-| SSH 别名 | `<ssh-alias>` | 本地 `~/.ssh/config` 或私密文档 |
-| 身份认证 | SSH 密钥 | 私钥只保存在本机受限目录，不进入 Obsidian/Git |
-| Minecraft 端口 | `<minecraft-port>/TCP` | [[Minecraft云服务器敏感连接信息]] |
-| 语音端口 | `<voice-port>/UDP` | [[Minecraft云服务器敏感连接信息]] |
-| RCON | 仅允许经 SSH 在服务器侧调用 | 端口和密码不得写入公开文档 |
+| 配置项          | 公开记录值                         | 实际值位置                         |
+| ------------ | ----------------------------- | ----------------------------- |
+| 服务器用途        | Minecraft Fabric 私服与 AI 新闻机器人 | 本文件                           |
+| 云平台          | 云主机                           | [[Minecraft云服务器敏感连接信息]]       |
+| 公网地址         | `<server-host>`               | [[Minecraft云服务器敏感连接信息]]       |
+| SSH 端口       | `<ssh-port>`                  | [[Minecraft云服务器敏感连接信息]]       |
+| SSH 用户       | `<ssh-user>`                  | [[Minecraft云服务器敏感连接信息]]       |
+| SSH 别名       | `<ssh-alias>`                 | 本地 `~/.ssh/config` 或私密文档      |
+| 身份认证         | SSH 密钥                        | 私钥只保存在本机受限目录，不进入 Obsidian/Git |
+| Minecraft 端口 | `<minecraft-port>/TCP`        | [[Minecraft云服务器敏感连接信息]]       |
+| 语音端口         | `<voice-port>/UDP`            | [[Minecraft云服务器敏感连接信息]]       |
+| RCON         | 仅允许经 SSH 在服务器侧调用              | 端口和密码不得写入公开文档                 |
 
 推荐在本机 SSH Config 中维护连接参数：
 

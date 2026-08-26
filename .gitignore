@@ -14,3 +14,15 @@
 ehthumbs.db
 Thumbs.db
 desktop.ini
+
+# AI Knowledge Hub 私密隔离区 (双重保险)
+09-AI_Knowledge_Hub/05-Private_Vault/
+05-Private_Vault/
+*.env
+*.env.local
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
