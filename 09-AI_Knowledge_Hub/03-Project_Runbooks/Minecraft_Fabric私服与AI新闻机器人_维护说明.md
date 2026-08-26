@@ -179,6 +179,7 @@ python3 daily_news_digest.py --test-push
 
 ## 关联文档
 
+- [[Minecraft云服务器连接与运维]]
 - [[Minecraft_Fabric服务器通用运维指南]]
 - [[Git与GitHub连接配置]]
 - [[HANDOFF_PROTOCOL]]
