@@ -213,6 +213,16 @@ python3 daily_news_digest.py --test-push
 5. 使用平滑重启或独立脚本生效，并验证进程、日志、端口和玩家列表。
 6. 在项目维护说明和故障记录中同步写明变更原因、回滚点和验证结果。
 
+### 2.5 玩家必需模组分发包
+
+当前服务器共享模组已从生产服务器原文件打包到本机桌面：
+
+```text
+C:\Users\22061\Desktop\Minecraft_服务器必需客户端模组_1.21.1.zip
+```
+
+包内 6 个 JAR 必须使用服务器对应版本：Architectury、Fabric API、Fabric Language Kotlin、FTB Library、FTB Ultimine、Simple Voice Chat。Chunky、FerriteCore、Krypton、Lithium 是服务器侧模组，不放入玩家包。详细安装步骤见包内 `README.md`。
+
 ## 三、架构红线与禁忌（Redlines）
 
 ### 3.1 人工核心红线状态
