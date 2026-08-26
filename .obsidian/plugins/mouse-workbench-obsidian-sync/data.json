@@ -9,7 +9,7 @@
     ".git"
   ],
   "autoSync": true,
-  "paused": false,
+  "paused": true,
   "lastSyncMessage": "同步失败：附件上传超时",
   "lastSyncAt": "2026-08-25T10:01:20.965Z"
 }
