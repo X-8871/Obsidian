@@ -61,7 +61,7 @@ flowchart TD
 > [!NOTE]
 > 以下清单于 2026-08-26 从本机文件系统与生产服务器实时核验。当前客户端实例物理路径为 `D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4`。
 
-#### 1.3.1 当前客户端实际加载目录（21 个 JAR）
+#### 1.3.1 当前客户端实际加载目录（27 个 JAR，已整理）
 
 实际加载目录：`D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4\mods`
 
@@ -69,11 +69,17 @@ flowchart TD
 |---|---|
 | 与服务器同名且版本一致 | Architectury `13.0.8`、FTB Library `2101.1.21`、FTB Ultimine `2101.1.10`、Simple Voice Chat `2.6.22` |
 | 与服务器同名但版本不同 | Fabric API：客户端 `0.116.6` / 服务端 `0.116.15`；Fabric Language Kotlin：客户端 `1.13.5 + Kotlin 2.2.10` / 服务端 `1.13.13 + Kotlin 2.4.10` |
-| 客户端专用或当前仅客户端安装 | Sodium `0.6.13`、AppleSkin `3.0.6`、Mouse Tweaks `2.26`、CustomSkinLoader `14.25`、Inventory Profiles Next `2.1.11`、Jade `15.10.2`、LAN Server Properties `1.13.2`、JEI `19.21.2.313`、Xaero's World Map `1.39.12`、Xaero's Minimap `25.2.10`、Distant Horizons `3.2.0-b`、Forge Config API Port `21.1.4`、Iris `1.8.8`、Just Enough Resources `1.6.0.12`、libIPN `6.5.1` |
+| 客户端专用或当前仅客户端安装 | Sodium `0.6.13`、AppleSkin `3.0.6`、Mouse Tweaks `2.26`、CustomSkinLoader `14.25`、Inventory Profiles Next `2.1.11`、Jade `15.10.2`、LAN Server Properties `1.13.2`、JEI `19.21.2.313`、Xaero's World Map `1.39.12`、Xaero's Minimap `25.2.10`、Distant Horizons `3.2.0-b`、Forge Config API Port `21.1.4`、Iris `1.8.8`、Just Enough Resources `1.6.0.12`、libIPN `6.5.1`、Carry On `2.2.2.11`、Mod Menu `11.0.3`、IMBlocker `5.4.3.1`、Placeholder API `2.4.2`、Cloth Config `15.0.140`、HMI `4.3` |
 
 客户端顶层完整文件名：
 
 ```text
+[搬运] carryon-fabric-1.21.1-2.2.2.11.jar
+[输入法冲突修复] IMBlocker-5.4.3.1-fabric-1.17+.jar
+[模组菜单] modmenu-11.0.3.jar
+[文本占位符 API] placeholder-api-2.4.2+1.21.jar
+cloth-config-15.0.140-fabric.jar
+HMI 4.3 - 1.21.(1).jar
 [连锁破坏] ftb-ultimine-fabric-2101.1.10.jar
 [钠] sodium-fabric-0.6.13+mc1.21.1.jar
 [苹果皮] appleskin-fabric-mc1.21-3.0.6.jar
@@ -97,19 +103,18 @@ libIPN-fabric-1.21-6.5.1.jar
 voicechat-fabric-1.21.1-2.6.22.jar
 ```
 
-#### 1.3.2 本机嵌套模组目录（26 个 JAR，当前通常不加载）
+#### 1.3.2 历史嵌套模组与隔离备份（20 个 JAR）
 
-异常嵌套目录：`D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4\mods\mods`
-
-Fabric 通常只扫描实例顶层 `mods` 中的 JAR，不会把普通的 `mods\mods` 子目录作为第二个模组目录。因此该目录应视为本机备份/误放区，不能据此判断模组已生效。
+原 `mods\mods` 嵌套目录已经清空并移除。6 个唯一模组已移动到顶层；20 个重复或旧版本没有删除，而是移动到隔离备份目录：`D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4\mods_quarantine_2026-08-26`。
 
 | 分类 | 模组 |
 |---|---|
-| 仅在嵌套目录发现 | Carry On `2.2.2.11`、Mod Menu `11.0.3`、IMBlocker `5.4.3.1`、Placeholder API `2.4.2`、Cloth Config `15.0.140`、HMI `4.3` |
-| 与顶层重复或存在旧版本副本 | FTB Ultimine、Sodium、AppleSkin、Mouse Tweaks、CustomSkinLoader、Inventory Profiles Next、Jade、LAN Server Properties、JEI、Xaero's World Map、Xaero's Minimap、Architectury、Fabric API、Fabric Language Kotlin、Forge Config API Port、FTB Library、Iris、Just Enough Resources、libIPN、Distant Horizons `2.3.4-b` |
+| 已移动到顶层并开始作为客户端模组管理 | Carry On `2.2.2.11`、Mod Menu `11.0.3`、IMBlocker `5.4.3.1`、Placeholder API `2.4.2`、Cloth Config `15.0.140`、HMI `4.3` |
+| 已隔离的重复或旧版本 | FTB Ultimine、Sodium、AppleSkin、Mouse Tweaks、CustomSkinLoader、Inventory Profiles Next、Jade、LAN Server Properties、JEI、Xaero's World Map、Xaero's Minimap、Architectury、Fabric API、Fabric Language Kotlin、Forge Config API Port、FTB Library、Iris、Just Enough Resources、libIPN、Distant Horizons `2.3.4-b` |
 
+隔离目录不在客户端 `mods` 路径下，不会被 Fabric 加载；如需回滚，应先停用客户端，再按模组 ID 和版本逐个恢复，不能整目录复制。
 > [!WARNING]
-> 嵌套目录保留了 Distant Horizons `2.3.4-b`，顶层实际使用的是 `3.2.0-b`。若以后把嵌套 JAR 批量移动到顶层，会产生重复版本和依赖冲突；移动前必须逐个去重，不能整目录复制。
+> 隔离备份中保留了 Distant Horizons `2.3.4-b`，当前顶层使用的是 `3.2.0-b`。不能把隔离目录批量移回顶层，否则会产生重复版本和依赖冲突。
 
 #### 1.3.3 客户端与服务端差异
 
@@ -122,7 +127,7 @@ Fabric 通常只扫描实例顶层 `mods` 中的 JAR，不会把普通的 `mods\
 #### 1.3.4 模组维护红线
 
 1. 不要把其他整合包目录中的 JAR 当作当前私服客户端模组。
-2. 不要把 `mods\mods` 中 26 个 JAR 整批移动到顶层；先按模组 ID 和版本逐个去重。
+2. 不要把隔离备份目录中的 20 个 JAR 整批移回顶层；先按模组 ID 和版本逐个去重。
 3. 客户端升级 Fabric API、Kotlin、FTB Library、FTB Ultimine、Voice Chat 或 Architectury 时，必须同时核对服务端对应版本。
 4. Chunky、Krypton、Lithium、FerriteCore 属于当前服务端侧集合，不要求直接复制到客户端。
 5. 新增模组后记录文件名、版本、安装侧（客户端/服务端/双方）和验证结果。
