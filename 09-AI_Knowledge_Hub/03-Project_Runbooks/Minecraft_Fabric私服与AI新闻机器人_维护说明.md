@@ -56,7 +56,78 @@ flowchart TD
 
 生产模组共 10 个：Fabric API、Fabric Language Kotlin、Lithium、Krypton、FerriteCore、Chunky、Simple Voice Chat、Architectury API、FTB Library、FTB Ultimine。升级时必须把依赖模组视为同一兼容性集合。
 
-### 1.3 新闻机器人源码职责
+### 1.3 客户端与本机模组清单
+
+> [!NOTE]
+> 以下清单于 2026-08-26 从本机文件系统与生产服务器实时核验。当前客户端实例物理路径为 `D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4`。
+
+#### 1.3.1 当前客户端实际加载目录（21 个 JAR）
+
+实际加载目录：`D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4\mods`
+
+| 类别 | 模组及当前客户端版本 |
+|---|---|
+| 与服务器同名且版本一致 | Architectury `13.0.8`、FTB Library `2101.1.21`、FTB Ultimine `2101.1.10`、Simple Voice Chat `2.6.22` |
+| 与服务器同名但版本不同 | Fabric API：客户端 `0.116.6` / 服务端 `0.116.15`；Fabric Language Kotlin：客户端 `1.13.5 + Kotlin 2.2.10` / 服务端 `1.13.13 + Kotlin 2.4.10` |
+| 客户端专用或当前仅客户端安装 | Sodium `0.6.13`、AppleSkin `3.0.6`、Mouse Tweaks `2.26`、CustomSkinLoader `14.25`、Inventory Profiles Next `2.1.11`、Jade `15.10.2`、LAN Server Properties `1.13.2`、JEI `19.21.2.313`、Xaero's World Map `1.39.12`、Xaero's Minimap `25.2.10`、Distant Horizons `3.2.0-b`、Forge Config API Port `21.1.4`、Iris `1.8.8`、Just Enough Resources `1.6.0.12`、libIPN `6.5.1` |
+
+客户端顶层完整文件名：
+
+```text
+[连锁破坏] ftb-ultimine-fabric-2101.1.10.jar
+[钠] sodium-fabric-0.6.13+mc1.21.1.jar
+[苹果皮] appleskin-fabric-mc1.21-3.0.6.jar
+[鼠标手势] MouseTweaks-fabric-mc1.21-2.26.jar
+[万用皮肤补丁] CustomSkinLoader_Fabric-14.25.jar
+[一键背包整理Next] InventoryProfilesNext-fabric-1.21-2.1.11.jar
+[玉 🔍] Jade-1.21.1-Fabric-15.10.2.jar
+[自定义局域网联机] lanserverproperties-1.13.2-fabric.jar
+[JEI物品管理器] jei-1.21.1-fabric-19.21.2.313.jar
+[Xaero的世界地图] XaerosWorldMap_1.39.12_Fabric_1.21.jar
+[Xaero的小地图] Xaeros_Minimap_25.2.10_Fabric_1.21.jar
+architectury-13.0.8-fabric.jar
+DistantHorizons-3.2.0-b-1.21.1-fabric-neoforge.jar
+fabric-api-0.116.6+1.21.1.jar
+fabric-language-kotlin-1.13.5+kotlin.2.2.10.jar
+ForgeConfigAPIPort-v21.1.4-1.21.1-Fabric.jar
+ftb-library-fabric-2101.1.21.jar
+iris-fabric-1.8.8+mc1.21.1.jar
+JustEnoughResources-Fabric-1.21.1-1.6.0.12.jar
+libIPN-fabric-1.21-6.5.1.jar
+voicechat-fabric-1.21.1-2.6.22.jar
+```
+
+#### 1.3.2 本机嵌套模组目录（26 个 JAR，当前通常不加载）
+
+异常嵌套目录：`D:\MC\PCL\.minecraft\versions\1.21.1-Fabric 0.18.4\mods\mods`
+
+Fabric 通常只扫描实例顶层 `mods` 中的 JAR，不会把普通的 `mods\mods` 子目录作为第二个模组目录。因此该目录应视为本机备份/误放区，不能据此判断模组已生效。
+
+| 分类 | 模组 |
+|---|---|
+| 仅在嵌套目录发现 | Carry On `2.2.2.11`、Mod Menu `11.0.3`、IMBlocker `5.4.3.1`、Placeholder API `2.4.2`、Cloth Config `15.0.140`、HMI `4.3` |
+| 与顶层重复或存在旧版本副本 | FTB Ultimine、Sodium、AppleSkin、Mouse Tweaks、CustomSkinLoader、Inventory Profiles Next、Jade、LAN Server Properties、JEI、Xaero's World Map、Xaero's Minimap、Architectury、Fabric API、Fabric Language Kotlin、Forge Config API Port、FTB Library、Iris、Just Enough Resources、libIPN、Distant Horizons `2.3.4-b` |
+
+> [!WARNING]
+> 嵌套目录保留了 Distant Horizons `2.3.4-b`，顶层实际使用的是 `3.2.0-b`。若以后把嵌套 JAR 批量移动到顶层，会产生重复版本和依赖冲突；移动前必须逐个去重，不能整目录复制。
+
+#### 1.3.3 客户端与服务端差异
+
+| 范围 | 模组 |
+|---|---|
+| 服务端专用或当前仅服务端安装 | Chunky `1.4.23`、FerriteCore `7.0.3`、Krypton `0.2.8`、Lithium `0.15.4` |
+| 客户端与服务端共有 | Architectury、Fabric API、Fabric Language Kotlin、FTB Library、FTB Ultimine、Simple Voice Chat |
+| 版本一致性风险 | Fabric API 与 Fabric Language Kotlin 的客户端版本低于服务端；目前能够连接不代表未来升级仍兼容，变更模组时应成组核对 |
+
+#### 1.3.4 模组维护红线
+
+1. 不要把其他整合包目录中的 JAR 当作当前私服客户端模组。
+2. 不要把 `mods\mods` 中 26 个 JAR 整批移动到顶层；先按模组 ID 和版本逐个去重。
+3. 客户端升级 Fabric API、Kotlin、FTB Library、FTB Ultimine、Voice Chat 或 Architectury 时，必须同时核对服务端对应版本。
+4. Chunky、Krypton、Lithium、FerriteCore 属于当前服务端侧集合，不要求直接复制到客户端。
+5. 新增模组后记录文件名、版本、安装侧（客户端/服务端/双方）和验证结果。
+
+### 1.4 新闻机器人源码职责
 
 入口文件为 `daily_news_digest.py`，当前仅依赖 Python 标准库。主要调用链如下：
 
