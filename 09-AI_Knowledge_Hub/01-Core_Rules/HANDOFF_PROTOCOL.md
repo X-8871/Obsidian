@@ -21,6 +21,8 @@ tags: [Handoff, Protocol, Multi-Agent, Workflow]
 # 📋 任务交接看板 (Task Handoff State)
 
 > **更新时间**: YYYY-MM-DD HH:mm (UTC+8)  
+> **项目物理路径**: `C:/Users/22061/Desktop/Project/...` (精准绝对路径)  
+> **Git 仓库地址**: `git@github.com:username/repository.git`  
 > **交接方**: [如 Antigravity / OpenCode] -> **接手方**: [如 Codex / Workbuddy]
 
 ## 1. 🎯 当前核心目标 (Goal)
