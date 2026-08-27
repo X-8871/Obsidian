@@ -5,9 +5,10 @@ domain: ai-workflow
 ---
 # AI与工作流索引
 
-## AI 工具使用
+## AI Agent & 智能目标管理
 
-- 暂无（原笔记已被 Mimo 损坏后清理）
+- [[PlanMind个人目标管理WebAgent|PlanMind 目标管理 Web Agent（Next.js + Obsidian 实时双向流）]]
+- [[PlanMind/00-INDEX|PlanMind 目标中心 MOC]]
 
 ## 嵌入式 + Codex 工作流
 
@@ -25,4 +26,3 @@ domain: ai-workflow
 - [[03-知识库/AI与工作流/AI相关技术/AI工作流搭建/embedded-vscode-codex-workflow-skills/source-index-update/SKILL]]
 - [[03-知识库/AI与工作流/AI相关技术/AI工作流搭建/embedded-vscode-codex-workflow-skills/task-spec-maker/SKILL]]
 - [[03-知识库/AI与工作流/AI相关技术/AI工作流搭建/embedded-vscode-codex-workflow-skills/workflow/SKILL]]
-
