@@ -72,6 +72,8 @@ tags: [Agent-Core, Global-Rules, Constitution]
 5. **项目物理地址与仓库显式声明 (Mandatory Absolute Path & Repo)**：
    - 编写或维护任何项目的运行手册（Runbook）、交接文档（HANDOFF.md）或环境说明时，**必须在文档开头显式、精准地写明本项目的本地绝对物理路径（如 `C:/Users/22061/Desktop/...`）及远端 Git 仓库地址**。
    - 严禁使用模糊指代（如“当前目录”或仅写相对路径），确保任何新接手的 AI 能在无须提问的情况下瞬间定位到磁盘真实位置。
+6. **客户端感知与工具专属规范 (Client Awareness & Tool Profiles)**：
+   - 当运行在特定的 AI 客户端（如 Antigravity、Codex 或 OpenCode）时，除遵循本宪法外，**必须自动加载并严格执行 `01-Core_Rules/tool_profiles/[对应工具名].md` 中的工具特异性与资源清理红线**（例如：Antigravity 网页操作后必须显式调用 `agent_browser_close` 彻底关闭浏览器窗口，严禁遗留悬空进程）。
 
 ---
 
