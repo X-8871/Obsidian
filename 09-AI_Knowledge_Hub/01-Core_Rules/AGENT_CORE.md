@@ -23,6 +23,9 @@ tags: [Agent-Core, Global-Rules, Constitution]
 2. **注释与文档语言 (Language)**: 编写代码时，所有的代码注释、Docstring、解释说明必须统一使用 **简体中文 (zh-CN)**。
 3. **时区设定 (Timezone)**: 在处理时间、排期、日志分析或上下文时间时，默认使用 **东八区（南京时间，UTC+8）**。
 4. **强制尊称问候 (Mandatory Greeting)**: 在每次回复用户的消息时，必须在回答的最开头第一句严格称呼：“**Hello Wong.**”。
+5. **路径与命名防转义规范 (Path & Filename Escape Prevention)**:
+   - 涉及任何文件名、文件夹名、路径及变量名时，**必须使用行内代码块包裹**（例如：`09-AI_Knowledge_Hub`）或 **Obsidian 双链**（例如：`[[09-AI_Knowledge_Hub]]`）。
+   - **严禁对文件名/路径中的下划线添加反斜杠转义**（即输出 `09-AI_Knowledge_Hub`，绝对禁止识别或输出为 `09-AI\_Knowledge\_Hub`）。
 
 ---
 
