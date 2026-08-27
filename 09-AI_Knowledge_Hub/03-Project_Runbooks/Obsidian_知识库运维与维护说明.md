@@ -29,7 +29,7 @@ tags: [Obsidian, Project-Runbook, Governance, Standards]
   ├── 📁 05-代码/              <-- 代码片段、算法与工程笔记
   ├── 📁 06-个人/              <-- 个人隐私与专属档案（受限区域）
   ├── 📁 07-电脑信息/          <-- 硬件、系统信息与已验证的命令直通手册
-  ├── 📁 08-PLAN/              <-- 计划、阶段目标与复习计划
+  ├── 📁 08-PlanMind/          <-- PlanMind 目标与计划中心
   ├── 📁 09-AI_Knowledge_Hub/  <-- AI 跨工具中央知识中枢（SSOT 规则与运维）
   ├── 📁 99-模板/ & Temptlaters/ <-- 笔记模板与插件模板
   └── 📁 .obsidian/            <-- Obsidian 系统与插件底层配置（禁止擅改）
@@ -78,7 +78,7 @@ tags: [Obsidian, Project-Runbook, Governance, Standards]
 | `Ctrl+H` | 创建日报 | `01-Daily/Daily/` |
 | `Ctrl+Shift+H` | 创建周报 | `01-Daily/Weekly/` |
 | `Alt+T` | 插入模板 | `Temptlaters/` |
-| 统一计划模板 | 计划与任务拆解 | `08-PLAN/模板/计划模板.md` |
+| PlanMind 目标中心 | 年度、月度、周度、日度与长期目标 | `08-PlanMind/` |
 
 ---
 

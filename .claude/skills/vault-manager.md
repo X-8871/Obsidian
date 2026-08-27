@@ -26,7 +26,9 @@ description: >
 04-课程/          专业课（数电）
 05-代码/          WiFi配网源码分析
 06-个人/          规划、健身、单词、个人信息
-99-模板/          预留模板整理区（当前空）
+08-PlanMind/      PlanMind 目标与计划管理中心
+09-AI_Knowledge_Hub/ AI 跨工具中央知识中枢与运维手记
+10-实验记录/      硬件上板、部署与实验验证记录
 Temptlaters/      Templater/QuickAdd 模板（Daily.md, note.md, 日报.md, 周报.md, Weekly.md）
 ```
 

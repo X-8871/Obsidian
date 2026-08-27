@@ -14,7 +14,7 @@ domain: ai-workflow
 ## AI Agent & 智能目标管理
 
 - [[PlanMind个人目标管理WebAgent|PlanMind 目标管理 Web Agent（Next.js + Obsidian 实时双向流）]]
-- [[PlanMind/00-INDEX|PlanMind 目标中心 MOC]]
+- [[08-PlanMind/00-INDEX|PlanMind 目标中心 MOC]]
 
 ## 嵌入式 + Codex 工作流
 

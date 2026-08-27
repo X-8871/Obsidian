@@ -54,7 +54,7 @@
 ## Vault 信息
 
 - **路径**: `C:/Users/22061/Documents/Obsidian Vault`
-- **结构**: 00-索引 / 01-Daily(Daily+Weekly) / 02-项目 / 03-知识库 / 04-课程 / 05-代码 / 06-个人 / 07-电脑信息 / 99-模板 / Temptlaters
+- **结构**: 00-索引 / 01-Daily / 02-项目 / 03-知识库 / 04-课程 / 05-代码 / 06-个人 / 07-电脑信息 / 08-PlanMind / 09-AI_Knowledge_Hub / 10-实验记录 / Temptlaters
 - **当前笔记数**: 请实时统计
 
 ## 环境参考
