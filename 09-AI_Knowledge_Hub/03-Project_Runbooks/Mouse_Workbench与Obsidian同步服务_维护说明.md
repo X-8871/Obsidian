@@ -4,7 +4,7 @@ domain: mouse-workbench
 project: Mouse-Workbench
 status: active
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 tags:
   - Mouse-Workbench
   - React
@@ -88,18 +88,18 @@ nothing/
 - 物理对象路径只由服务端用户 ID 与 SHA-256 派生；客户端的用户 ID、物理路径、removed、大小和哈希都不可信。
 - Signed download URL 默认 10 分钟；配对码为一次性 8 位码、默认 10 分钟；设备令牌只保存摘要。
 
-### 1.5 当前生产状态（2026-08-26 21:28，UTC+8）
+### 1.5 当前生产状态（2026-08-27 16:18，UTC+8）
 
 | 项目 | 当前状态 |
 |---|---|
-| Web 前端 | 已部署到 `/var/www/workbench`，生产域名为 `workbench.spectator0618.online` |
+| Web 前端 | 已部署到 `/var/www/workbench`，生产域名为 `workbench.spectator0618.online`；资源加载修复提交 `37ae82c` 已上线 |
 | Obsidian API release | `/opt/mouse-workbench/obsidian-api/releases/20260826-201030`，由 `current` 软链接指向 |
-| API 运行状态 | 用户已要求暂停验收；`obsidian-api.socket` 与 `obsidian-api.service` 均为 inactive，8787 未监听；socket 仍为 enabled |
+| API 运行状态 | `obsidian-api.socket` 按需监听；最近请求完成后 service 回到 inactive；公开 `/api/obsidian/health` 返回 200 |
 | Nginx | active，未停止，继续承载网站和其他现有路由 |
-| Obsidian 数据目录 | `/srv/mouse-workbench/obsidian`，当前约 112 KiB，仅初始化数据，尚无真实 Vault 上传 |
-| 生产验收 | Task 1～14 已完成；Task 15 真实 Vault、权限、渲染与插件验收延期到下一次维护窗口 |
+| Obsidian 数据目录 | `/srv/mouse-workbench/obsidian`；安全验收 Vault 为 5 个文件、revision 2，真实 Vault 尚未上传 |
+| 生产验收 | Task 1～14 已完成；Task 15 的 B/A 安全夹具、登录、渲染和签名资源已通过；真实 Vault、插件、移动端和回滚仍待完成 |
 | Supabase 旧资源 | 继续保留，未删除、未清空、未迁移清理 |
-| 当前源码基线 | `6bc48b7`；前端 189 项测试、后端 37 项测试通过，三个构建均成功 |
+| 当前源码基线 | 代码修复提交 `37ae82c`，交接记录提交 `78f7084`；前端 192 项测试、后端 37 项测试通过，前端构建成功 |
 
 ## 二、运行与部署指令（Runbook）
 
@@ -128,7 +128,7 @@ git diff --check
 git status --short
 ```
 
-当前测试基线：主项目 15 个测试文件、189 项测试；后端 9 个测试文件、37 项测试。插件只有构建脚本，没有独立测试脚本。主构建存在既有的 `chunk larger than 500 kB` 警告，但构建成功。
+当前测试基线：主项目 16 个测试文件、192 项测试；后端 9 个测试文件、37 项测试。插件只有构建脚本，没有独立测试脚本。主构建存在既有的 `chunk larger than 500 kB` 警告，但构建成功。
 
 ### 2.2 环境变量与敏感边界
 
@@ -198,14 +198,23 @@ sudo du -sh /srv/mouse-workbench/obsidian
 
 下一次维护窗口恢复 socket 后，严格执行 [[大文件清单式原子同步验收SOP]]，并补齐以下项目专属结果：
 
-- [ ] B 模式上传小型测试 Vault，验证登录隔离与所有查看器。
-- [ ] A 模式覆盖真实 Vault，记录文件数、逻辑总字节、上传字节与 revision。
-- [ ] 验证新增、修改、删除、重命名及失败时旧 revision 可读。
+- [x] B 模式安全夹具上传 5 个文件，已验证登录、Markdown、Wiki Link、图片、Mermaid、Canvas、纯文本。
+- [ ] A 模式覆盖真实 Vault，记录文件数、逻辑总字节、上传字节与 revision；当前待用户确认上传非私密范围。
+- [x] A 模式安全夹具验证修改 1、增加 2、删除 2、未变化 2，revision 2 提交成功，缺失 Wiki Link 显示断链提示。
 - [ ] 使用约 47 MiB 代表文件验证连续字节进度、未知二进制元信息与下载。
 - [ ] 验证 Markdown、Wiki Link、图片、Mermaid、Canvas、Excalidraw、Markmap、PDF、音视频。
 - [ ] 重新配对插件，验证增量同步、完整重建和设备撤销。
 - [ ] 核对用户隔离、路径穿越、签名过期、超配额、移动端、深色模式和重新登录。
 - [ ] 核对 API 内存、磁盘、journal 与 Nginx 日志，不得出现 token 或正文。
+
+### 2.7 本轮验收与源码归档记录（2026-08-27）
+
+- **资源加载修复**：阅读页改为稳定订阅 Vault 文件列表，并合并 Signed URL/正文缓存，避免 React 重渲染重复请求；新增 3 项回归测试。
+- **生产复测**：最新前端包图片实际尺寸为 640×240，Mermaid SVG 存在，Wiki Link 可跳转，纯文本可读，浏览器无错误；远端主包 SHA-256 与本地构建一致。
+- **缓存注意**：旧 Service Worker/浏览器缓存可能继续使用旧包；发布后使用版本参数或强制刷新，确认加载的是最新入口。
+- **源码归档**：已将 247 个 Git 跟踪的源代码/项目配置文件复制到 `C:/Users/22061/Desktop/Person/_workdesk`，保持相对目录结构并为每个文件名前加 `01_`；排除依赖、构建产物、密钥、数据库、运行时文件、临时文件及用户既有未跟踪文件，247 个文件逐一 SHA-256 校验通过。
+- **相关提交**：代码 `37ae82c`；验收交接记录 `4291d46`、`5988ed1`、`78f7084`。
+- **当前边界**：真实 Vault 非私密范围统计约 508 个文件、284.40 MiB；上传前必须取得即时确认，并排除 `.obsidian`、`.trash`、`.git` 与 `05-Private_Vault/`。
 
 ## 三、架构红线与禁忌（Redlines）
 
