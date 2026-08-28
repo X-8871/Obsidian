@@ -235,4 +235,3 @@ git commit -m "<类型>(<模块>): <说明>"
 - [[大文件清单式原子同步验收SOP]]
 - [[HANDOFF_PROTOCOL]]
 - [[Git与GitHub连接配置]]
-
