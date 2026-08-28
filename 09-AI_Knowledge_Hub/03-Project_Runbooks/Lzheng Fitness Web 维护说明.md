@@ -4,7 +4,7 @@ domain: fitness
 project: lzheng-fitness-web
 status: active
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-08-28
 tags:
   - Fitness
   - Lzheng
@@ -17,10 +17,11 @@ tags:
 # Lzheng Fitness Web 维护说明
 
 > [!INFO] 项目定位
-> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Person_workdesk\02_Fitness`
-> - **Git 仓库地址**：未配置远程仓库；当前为本地 Git 仓库，分支 `master`
+> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Person_WorkBeach\apps\fitness`
+> - **统一 Git 仓库地址**：`https://github.com/X-8871/Person_WorkBeach.git`
+> - **历史来源**：原本地仓库 `C:\Users\22061\Desktop\Person_workdesk\02_Fitness`，源提交历史已导入统一仓库
 > - **当前版本**：`0.1.0`（项目内的 Lzheng Fitness 包版本为 `2.3.1`）
-> - **当前提交**：`da582fd feat: redesign fitness workbench`
+> - **历史源提交**：`da582fd feat: redesign fitness workbench`
 
 > [!IMPORTANT]
 > 这是一个以 `Lzheng Fitness Skills v2.3.1` 为知识与流程核心的本地个人健身工作台。当前由本地规则代理提供服务，不需要 API Key；后续接入真实 AI Provider 时，应只替换服务端代理，不改变前端流程和安全边界。
@@ -60,7 +61,7 @@ tags:
 核心目录：
 
 ```text
-02_Fitness/
+fitness/
 ├── public/                         # 网页、样式、交互与同步后的包数据
 │   ├── index.html                  # 单页工作台结构
 │   ├── styles.css                  # 视觉、响应式与无障碍样式
@@ -116,7 +117,7 @@ flowchart LR
 ### 2.1 本地启动
 
 ```powershell
-cd C:\Users\22061\Desktop\Person_workdesk\02_Fitness
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\fitness'
 npm start
 ```
 
@@ -132,7 +133,7 @@ npm start
 ### 2.2 语法检查与测试
 
 ```powershell
-cd C:\Users\22061\Desktop\Person_workdesk\02_Fitness
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\fitness'
 npm run check
 npm test
 ```
@@ -174,7 +175,7 @@ npm test
 | 页面显示“本地代理” | 当前尚未接入真实 AI Provider | 这是预期状态；后续只在服务端增加 Provider 与环境变量，不改前端调用入口 |
 | 出现红旗症状后没有训练推进 | 安全分流已触发 `stop` | 先停止高强度训练，必要时寻求专业评估；不要通过改前端文案绕过安全阻断 |
 | 动作提示仍不够详细 | 当前动作条目主要提供组次、次数和一句执行提示 | 后续补充动作步骤、呼吸节奏、常见错误、疼痛停止条件、替代动作与示范媒体，并保持安全提示优先 |
-| 旧工作区路径仍被某个窗口引用 | 项目已移动到 `Person_workdesk`，旧 `Project\fitness` 目录仅为空壳目录 | 以 `C:\Users\22061\Desktop\Person_workdesk\02_Fitness` 为唯一当前路径；重新从该目录启动服务 |
+| 旧工作区路径仍被某个窗口引用 | 项目已并入 Person WorkBeach 单仓库 | 以 `C:\Users\22061\Desktop\Person_WorkBeach\apps\fitness` 为唯一当前代码路径；重新从该目录启动服务 |
 
 ### 当前接手状态
 
@@ -187,8 +188,8 @@ npm test
 
 ## 🔗 相关 Obsidian 文档
 
-- 训练内容基线：[[健身执行计划]]
+- 训练内容基线：项目内 `PRODUCT.md` 与 `Lzheng-fitness-main.zip`（原始技能包只读）
 - 知识中枢总览：[[00-AI知识中枢总览]]
 - 项目维护手册模板：[[重点项目维护说明_模板]]
 - 跨工具交接协议：[[HANDOFF_PROTOCOL]]
-
+- 统一项目总手册：[[Person_WorkBeach统一工作台_维护说明]]

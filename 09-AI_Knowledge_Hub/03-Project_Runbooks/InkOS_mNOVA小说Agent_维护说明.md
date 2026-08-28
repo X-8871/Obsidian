@@ -4,7 +4,7 @@ domain: ai-agent
 project: inkos-mnova
 status: active
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-08-28
 tags:
   - InkOS
   - mNOVA
@@ -18,17 +18,19 @@ tags:
 # InkOS / mNOVA 小说 Agent 维护说明
 
 > [!INFO] 项目定位
-> - **Git 权威源码目录**：`C:\Users\22061\Desktop\Project\novel-agent\inkos`
-> - **运行数据与配置根目录**：`C:\Users\22061\Desktop\Project\novel-agent`
-> - **工作台源码快照**：`C:\Users\22061\Desktop\Person\_workdesk\05_Novel`
+> - **Git 权威源码目录**：`C:\Users\22061\Desktop\Person_WorkBeach\apps\novel`
+> - **统一 Git 仓库地址**：`https://github.com/X-8871/Person_WorkBeach.git`
+> - **默认隔离运行目录**：`C:\Users\22061\Desktop\Person_WorkBeach\apps\novel\test-project`
+> - **外部真实项目目录**：通过 `INKOS_PROJECT_ROOT` 显式注入，不复制进平台代码目录
 > - **上游仓库**：`https://github.com/Narcooo/inkos.git`
-> - **个人发布仓库**：`https://github.com/X-8871/inkos.git`
+> - **历史个人仓库**：`https://github.com/X-8871/inkos.git`
 
 > [!WARNING]
-> `05_Novel` 是 2026-08-27 生成的便携源码快照，已排除 `.git`、`node_modules`、构建产物、缓存、运行日志、数据库和密钥文件。日常开发、查看历史和 Git 提交仍以权威源码目录为准；若未来决定迁移仓库，必须显式迁移 `.git` 或重新绑定远程仓库。
+> InkOS 源码和历史已正式并入 Person WorkBeach 单仓库。日常开发、查看历史和提交只在统一仓库进行；外部小说项目、运行数据库、日志和密钥继续与源码分离。
 
 > [!IMPORTANT]
 > mNOVA 当前产品基线是**默认简洁爽文模式**：保留逐章契约、事实、连续性、状态、伏笔和字数硬校验，默认不运行白金盲审和整批重写。白金审稿仅作为用户显式选择的高级模式。
+> 统一平台接入与维护边界见 [[Person_WorkBeach统一工作台_维护说明]]。
 
 ---
 
@@ -54,24 +56,23 @@ InkOS 是长篇小说、短篇、剧本、分镜、互动叙事和翻译工作�
 | Core | Zod、YAML/JSON 状态文件、SQLite 长期记忆、Vitest |
 | Studio | React 19、Vite 6、Hono、SSE |
 | 当前版本 | InkOS monorepo `1.7.2` |
-| 当前模型路由 | DeepSeek 官方 OpenAI-compatible API，模型配置为 `deepseek-v4-flash` |
+| 当前模型路由 | 统一入口读取平台 `WORKBEACH_AI_MODEL`；独立模式读取 InkOS 自己的本机 Provider 配置 |
 | Studio 地址 | `http://127.0.0.1:4567/`；mNOVA 页面为 `/#/mnova` |
 
-### 1.3 三类物理目录必须区分
+### 1.3 源码与运行数据目录必须区分
 
 ```text
-C:\Users\22061\Desktop\Project\novel-agent\
-├── inkos\                         # Git 权威源码仓库
-│   ├── packages\core\src\mnova\ # mNOVA 核心状态机、协调器与守门逻辑
-│   ├── packages\cli\src\         # CLI 入口与 mNOVA 命令
-│   ├── packages\studio\src\      # Studio API 与 React 控制室
-│   └── docs\plans\                # 能力验证计划
-├── books\                         # 真实小说项目及运行状态，不属于源码包
-├── docs\validation\              # Gate 验收证据
-└── inkos.json                     # 项目级配置，严禁写入明文密钥
+C:\Users\22061\Desktop\Person_WorkBeach\apps\novel\
+├── packages\core\src\mnova\     # mNOVA 核心状态机、协调器与守门逻辑
+├── packages\cli\src\            # CLI 入口与 mNOVA 命令
+├── packages\studio\src\         # Studio API 与 React 控制室
+├── docs\plans\                   # 能力验证计划
+└── test-project\                 # 统一启动默认使用的隔离演示项目
 
-C:\Users\22061\Desktop\Person\_workdesk\05_Novel\
-└── ...                            # 便携源码快照，不含 Git 历史与依赖
+<INKOS_PROJECT_ROOT>\
+├── books\                        # 真实小说项目及运行状态，不属于源码仓库
+├── docs\validation\             # Gate 验收证据
+└── inkos.json                    # 项目级配置，严禁写入明文密钥
 ```
 
 ### 1.4 mNOVA 核心模块职责
@@ -122,7 +123,7 @@ flowchart LR
 ### 2.1 安装依赖
 
 ```powershell
-Set-Location 'C:\Users\22061\Desktop\Project\novel-agent\inkos'
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\novel'
 pnpm install
 ```
 
@@ -138,9 +139,9 @@ Studio 类型检查依赖最新 Core `dist`，因此修改 Core 后应先构建 
 ### 2.3 Windows 下启动 Studio
 
 ```powershell
-Set-Location 'C:\Users\22061\Desktop\Project\novel-agent\inkos'
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\novel'
 $env:INKOS_STUDIO_PORT = '4567'
-$env:INKOS_PROJECT_ROOT = 'C:\Users\22061\Desktop\Project\novel-agent'
+$env:INKOS_PROJECT_ROOT = 'C:\Users\22061\Desktop\Person_WorkBeach\apps\novel\test-project'
 pnpm --filter @actalk/inkos-studio exec tsx src/api/index.ts
 ```
 
@@ -158,7 +159,7 @@ Invoke-WebRequest -UseBasicParsing 'http://127.0.0.1:4567/'
 ### 2.4 定向测试与构建验收
 
 ```powershell
-Set-Location 'C:\Users\22061\Desktop\Project\novel-agent\inkos'
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\novel'
 
 # Core mNOVA 测试
 pnpm --filter @actalk/inkos-core exec vitest run "src/__tests__/mnova-*.test.ts"
@@ -188,7 +189,7 @@ pnpm --filter @actalk/inkos-studio build
 ### 2.6 Git 工作流
 
 ```powershell
-Set-Location 'C:\Users\22061\Desktop\Project\novel-agent\inkos'
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach'
 git status --short
 git diff --check
 git diff -- <本轮文件>
@@ -196,9 +197,9 @@ git add -- <本轮文件>
 git commit -m "<类型>(mnova): <本轮说明>"
 ```
 
-- 当前主分支：`master`。
+- 当前统一仓库主分支：`main`。
 - 只提交本轮相关文件；不得混入用户已有的 `packages/studio/tsconfig.server.json`、`pnpm-lock.yaml` 等无关改动。
-- `05_Novel` 快照没有 `.git`，不能作为提交位置。
+- 模块源码位于 `apps/novel`，但 Git 暂存和提交必须从 Person WorkBeach 根目录核对。
 
 ---
 
@@ -215,7 +216,7 @@ git commit -m "<类型>(mnova): <本轮说明>"
 6. **项目记忆隔离**：不同小说项目不得共用 `story/memory.db`、状态文件或契约；禁止从历史测试项目污染新书。
 7. **伏笔身份唯一**：每条伏笔必须有唯一 `id/hookId`；重复 ID 必须中止结算，而不是静默覆盖。
 8. **密钥零落盘红线**：真实密钥不得进入源码、Obsidian、测试夹具、日志、错误堆栈、模型 Trace 或提交历史。
-9. **Git 权威目录唯一**：未完成正式迁移前，只在 `...\novel-agent\inkos` 中提交；不得把工作台快照误当权威仓库。
+9. **Git 权威目录唯一**：只在 `C:\Users\22061\Desktop\Person_WorkBeach` 统一仓库中提交；历史 InkOS 仓库只用于追溯，不再作为日常提交目标。
 
 ---
 
@@ -237,6 +238,7 @@ git commit -m "<类型>(mnova): <本轮说明>"
 - Gate 0 的基础代码、默认简洁模式和相关测试已完成。
 - A8 隔离项目已验证默认 `qualityMode: simple`、真实 30 章大纲和契约有效。
 - A8 四章实跑在第 1 章生成前收到 DeepSeek 官方 `402 Insufficient Balance`，因此 **Gate 1 尚未通过**；没有生成章节，契约哈希前后一致。
+- 2026-08-28 统一平台的 DeepSeek 最小请求已返回成功，但这只证明平台出站链路可用，不能替代 mNOVA 四章业务 Gate。
 - 原验证计划仍含“百炼 + 强制白金”的旧验收口径，与当前“DeepSeek 官方 + 默认简洁爽文”的产品决策不一致。应在真实四章通过后更新计划与 Gate 2 交接文件。
 
 ### 4.2 下一步恢复顺序
@@ -255,3 +257,4 @@ git commit -m "<类型>(mnova): <本轮说明>"
 - 本机开发环境：[[常用开发环境与工具链]]
 - Git 连接规范：[[Git与GitHub连接配置]]
 - 跨 Agent 交接：[[HANDOFF_PROTOCOL]]
+- 统一项目总手册：[[Person_WorkBeach统一工作台_维护说明]]

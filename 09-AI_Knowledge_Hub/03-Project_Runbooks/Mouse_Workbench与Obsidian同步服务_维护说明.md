@@ -4,7 +4,7 @@ domain: mouse-workbench
 project: Mouse-Workbench
 status: active
 created: 2026-08-26
-updated: 2026-08-27
+updated: 2026-08-28
 tags:
   - Mouse-Workbench
   - React
@@ -17,17 +17,18 @@ tags:
 # Mouse Workbench 与 Obsidian 同步服务维护说明
 
 > [!INFO] 项目定位
-> - **项目物理绝对路径**：`C:/Users/22061/Desktop/Project/nothing`
-> - **Git 仓库地址**：`https://github.com/X-8871/mousewong-personal-web.git`
+> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Person_WorkBeach\apps\core-workbench`
+> - **统一 Git 仓库地址**：`https://github.com/X-8871/Person_WorkBeach.git`
+> - **历史来源仓库**：`https://github.com/X-8871/mousewong-personal-web.git`
 
 > [!IMPORTANT]
-> 任何 AI 在修改本项目的本地数据模型、账号同步、Obsidian 同步协议或生产部署前，必须通读本手册，并严格遵守第三节红线。通用发布与按需激活方法引用 [[低内存Node服务按需激活与原子发布指南]]，端到端同步验收引用 [[大文件清单式原子同步验收SOP]]。
+> 任何 AI 在修改本项目的本地数据模型、账号同步、Obsidian 同步协议或生产部署前，必须通读本手册，并严格遵守第三节红线。统一平台边界见 [[Person_WorkBeach统一工作台_维护说明]]；通用发布与按需激活方法引用 [[低内存Node服务按需激活与原子发布指南]]，端到端同步验收引用 [[大文件清单式原子同步验收SOP]]。
 
 ## 一、技术栈与架构概览
 
 ### 1.1 项目定位与技术基线
 
-Mouse Workbench 是一个本地优先的个人工作台，覆盖项目、任务、习惯、日记、日历、闪念、知识库、词汇与只读 Obsidian 浏览。当前源码根目录为 `C:/Users/22061/Desktop/Project/nothing`，主分支为 `main`。
+Mouse Workbench 是一个本地优先的个人工作台，覆盖项目、任务、习惯、日记、日历、闪念、知识库、词汇与只读 Obsidian 浏览。当前源码根目录为 `C:\Users\22061\Desktop\Person_WorkBeach\apps\core-workbench`，统一仓库主分支为 `main`。它现在还承担 Person WorkBeach 统一壳层职责，但业务数据模型和 Obsidian 同步协议仍由本模块独立维护。
 
 | 层级 | 当前技术与职责 |
 |---|---|
@@ -64,7 +65,7 @@ flowchart TD
 ### 1.3 核心目录职责
 
 ```text
-nothing/
+core-workbench/
 ├── src/db/                         # IndexedDB schema 与 repositories
 ├── src/stores/                     # Zustand 状态与业务写入编排
 ├── src/services/                   # 备份、快照、递归、Obsidian 同步与渲染逻辑
@@ -106,7 +107,7 @@ nothing/
 ### 2.1 本地开发与验证
 
 ```powershell
-Set-Location 'C:/Users/22061/Desktop/Project/nothing'
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\core-workbench'
 
 # 主前端
 npm ci
@@ -284,3 +285,4 @@ sudo du -sh /srv/mouse-workbench/obsidian
 - [[Git与GitHub连接配置]]
 - [[云服务器连接与运维_模板]]
 - [[HANDOFF_PROTOCOL]]
+- [[Person_WorkBeach统一工作台_维护说明]]

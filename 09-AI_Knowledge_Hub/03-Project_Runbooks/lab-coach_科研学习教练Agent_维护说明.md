@@ -4,12 +4,12 @@ domain: ai-agent
 project: lab-coach
 status: active
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-08-28
 tags:
   - lab-coach
   - AI-Agent
   - Python
-  - Flask
+  - FastAPI
   - Socratic
   - Runbook
   - Edge-Deploy
@@ -18,12 +18,13 @@ tags:
 # lab-coach 科研学习教练 Agent 维护说明
 
 > [!INFO] 项目定位
-> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Person_workdesk\03_lab-coach`
-> - **Git 仓库地址**：`https://github.com/X-8871/lab_coach.git`
+> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Person_WorkBeach\apps\lab-coach`
+> - **统一 Git 仓库地址**：`https://github.com/X-8871/Person_WorkBeach.git`
+> - **历史来源仓库**：`https://github.com/X-8871/lab_coach.git`
 
 > [!IMPORTANT]
 > 任何 AI 在接手、重构或使用本项目前，必须通读本手册，并**严格遵守第三节「架构红线与禁忌」**。
-> 教学交互与提示分级 SOP 详见 [[lab-coach_苏格拉底科研教学闭环SOP]]，开发环境基线详见 [[常用开发环境与工具链]]。
+> 教学交互与提示分级 SOP 详见 [[lab-coach_苏格拉底科研教学闭环SOP]]，统一平台边界见 [[Person_WorkBeach统一工作台_维护说明]]，开发环境基线详见 [[常用开发环境与工具链]]。
 
 ---
 
@@ -40,7 +41,7 @@ tags:
 | 维度 | 技术选型与规范 |
 | :--- | :--- |
 | **编程语言 & 运行时** | Python 3.10+（本机推荐 Python 3.12） |
-| **Web 框架 & 通信** | Flask + Jinja2 + Server-Sent Events (SSE) 流式对话 |
+| **Web 框架 & 通信** | FastAPI + Uvicorn + Jinja2 + Server-Sent Events (SSE) 流式对话 |
 | **数据持久化** | SQLite 3 (`data/lab-coach.db`)，内置严格业务状态机 |
 | **LLM 客户端** | OpenAI API 兼容客户端（支持 DeepSeek / OpenAI / Moonshot / vLLM / Ollama） + 离线 `FakeLLMClient` |
 | **交互双入口** | **Web UI**（端口 `8321`） + **CLI**（`python -m cli.lab_coach`，支持外部智能体代理） |
@@ -49,8 +50,8 @@ tags:
 ### 1.3 核心目录职责划分
 
 ```text
-03_lab-coach/
-├── app/                    # Web UI 模块 (Flask + Jinja2 模板 + SSE 流式聊天)
+lab-coach/
+├── app/                    # Web UI 模块 (FastAPI + Jinja2 模板 + SSE 流式聊天)
 │   ├── static/style.css    # 样式表
 │   ├── templates/          # 视图模板 (dashboard, project, chat, report, challenge, settings)
 │   ├── web.py              # Flask Web 路由与 API 实现
@@ -125,7 +126,7 @@ flowchart TD
 ### 2.1 本地环境配置与启动
 ```powershell
 # 1. 进入工作目录
-cd C:\Users\22061\Desktop\Person_workdesk\03_lab-coach
+Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach\apps\lab-coach'
 
 # 2. 安装依赖 (Python 3.10+)
 pip install -r requirements.txt
@@ -194,7 +195,7 @@ python -m app.run
 | `LLM JSON 输出解析失败` | 某些小模型输出了 Markdown 闲聊前缀 | `core/engine.py` 内置了 `parse_json_robust` 正则提取器，若仍报错，检查模型 temperature 或切换到更强模型 |
 | Windows 控制台输出中文乱码 | 控制台代码页非 UTF-8 (默认 GBK 936) | 在终端先执行 `chcp 65001` 切换代码页，或设置 `PYTHONIOENCODING=utf-8` |
 | `LLM 调用失败: Connection refused` | `config.yaml` 中 `base_url` 无法访问或端口未开 | 检查本地模型服务（Ollama/vLLM）是否启动，或在 `config.yaml` 设置 `llm.fake: true` 使用离线桩 |
-| `端口 8321 被占用` | 残留后台 Flask 进程未释放 | 执行 `netstat -ano \| findstr :8321` 查询 PID 并通过 `taskkill /F /PID <pid>` 终止 |
+| `端口 8321 被占用` | 残留后台 Uvicorn / Python 进程未释放 | 先核对 PID 命令行属于本项目，再精确终止对应进程 |
 
 ---
 
@@ -232,3 +233,4 @@ graph LR
 - 教学闭环 SOP：[[lab-coach_苏格拉底科研教学闭环SOP]]
 - 本机环境基线：[[常用开发环境与工具链]]
 - 全局 AI 宪法：[[AGENT_CORE]]
+- 统一项目总手册：[[Person_WorkBeach统一工作台_维护说明]]
