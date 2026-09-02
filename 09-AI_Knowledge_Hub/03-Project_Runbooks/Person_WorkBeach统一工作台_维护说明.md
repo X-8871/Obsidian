@@ -17,7 +17,7 @@ tags:
 # Person WorkBeach 统一工作台维护说明
 
 > [!INFO] 项目定位
-> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Person_WorkBeach`
+> - **项目物理绝对路径**：`C:\Users\22061\Desktop\Project\Person_WorkBeach`
 > - **Git 仓库地址**：`https://github.com/X-8871/Person_WorkBeach.git`
 > - **当前分支**：`main`
 > - **统一入口**：`http://127.0.0.1:3000/`
@@ -71,7 +71,7 @@ Person_WorkBeach/
 | WorkBench | `apps/core-workbench` | IndexedDB、Supabase 工作区、Obsidian 同步服务 | [[Mouse_Workbench与Obsidian同步服务_维护说明]] |
 | Fitness | `apps/fitness` | 浏览器 `localStorage` | [[Lzheng Fitness Web 维护说明]] |
 | lab-coach | `apps/lab-coach` | `data/lab-coach.db` 与教学状态机 | [[lab-coach_科研学习教练Agent_维护说明]] |
-| PlanMind | `apps/plan-web` | Obsidian `08-PLAN`、本机 `config.json` | [[PlanMind计划管理_维护说明]] |
+| PlanMind | `apps/plan-web` | Obsidian `08-PlanMind`、本机 `config.json` | [[PlanMind计划管理_维护说明]] |
 | InkOS / mNOVA | `apps/novel` | 外部小说项目目录、项目级状态与记忆 | [[InkOS_mNOVA小说Agent_维护说明]] |
 
 > [!TIP]
@@ -103,7 +103,7 @@ flowchart LR
 ### 2.1 首次安装与统一启动
 
 ```powershell
-Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach'
+Set-Location 'C:\Users\22061\Desktop\Project\Person_WorkBeach'
 pnpm bootstrap
 pnpm dev
 ```
@@ -164,7 +164,7 @@ pnpm backup
 - WorkBench：从设置页导出，导出文件可能包含黑猫 API Key，应按敏感资产处理；
 - Fitness：浏览器数据不在仓库备份中，需通过模块界面导出；
 - lab-coach：停止模块后备份 `apps/lab-coach/data`；
-- PlanMind：备份 Obsidian `08-PLAN` 和本机 `config.json`，不得提交密钥；
+- PlanMind：备份 Obsidian `08-PlanMind` 和本机 `config.json`，不得提交密钥；
 - InkOS：优先使用自身书籍备份能力，不直接复制运行中的项目级数据库。
 
 恢复时只恢复受影响模块，禁止用某个模块的备份覆盖平台或其他模块。
@@ -174,7 +174,7 @@ pnpm backup
 所有新开发只在统一仓库提交：
 
 ```powershell
-Set-Location 'C:\Users\22061\Desktop\Person_WorkBeach'
+Set-Location 'C:\Users\22061\Desktop\Project\Person_WorkBeach'
 git status --short
 git diff --check
 git add -- <本轮相关文件>
