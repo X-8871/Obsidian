@@ -10,5 +10,5 @@
 实际 Vivado、Vitis 和验证工程位于：
 
 ```text
-D:\FPGA\_Competition\
+D:\FPGA_Competition\
 ```

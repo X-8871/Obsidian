@@ -3,4 +3,4 @@
 记录 RTL 模块级和系统级仿真。每条记录至少包含：日期、工程路径、输入条件、预期结果、实际结果、波形截图或报告路径、结论。
 
 - 正式记录入口：[[../实验记录|实验记录]]
-- 原始仿真输出：`D:\FPGA\_Competition\verification\sim_results\`
+- 原始仿真输出：`D:\FPGA_Competition\verification\sim_results\`
