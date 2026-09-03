@@ -10,6 +10,5 @@
 实际 Vivado、Vitis 和验证工程位于：
 
 ```text
-D:\fpga\AX7Z020_Gesture\
+D:\FPGA\_Competition\
 ```
-

@@ -3,5 +3,4 @@
 记录下载、串口、摄像头、HDMI、LED 和连续运行测试。每次上板都要写清：板卡型号、工程版本、下载文件、现象、问题和结论。
 
 - 正式记录入口：[[../实验记录|实验记录]]
-- 原始上板工程：`D:\fpga\AX7Z020_Gesture\verification\`
-
+- 原始上板工程：`D:\FPGA\_Competition\verification\`
